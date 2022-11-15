@@ -2,7 +2,7 @@
   "name": "client",
   "version": "1.0.0",
   "description": "",
-  "private": "true",
+  "private": true,
   "scripts": {
     "build": "webpack --mode development",
     "dev": "webpack-dev-server",
@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
-    "bootstrap": "^5.2.2"
+    "bootstrap": "^5.2.2",
+    "idb": "^7.1.1"
   }
 }
