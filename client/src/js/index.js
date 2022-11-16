@@ -7,7 +7,7 @@ import Bear from '../images/bear.png';
 import Dog from '../images/dog.png';
 
 
-import { initDB, getDb, postDb, deleteDb } from './database';
+import { initDB, getDb, postDb, deleteDb, editDb } from './database';
 import { fetchCards } from './cards';
 import { toggleForm, clearForm } from './form'
 
@@ -25,6 +25,18 @@ window.deleteCard = (e) => {
     deleteDb(id);
     fetchCards;
 };
+
+window.editCard = (e) => {
+    profileId = parseInt(e.dataset.id);
+    let editName = e.dataset.name;
+    let editEmail = e.dataset.email;
+    let editPhone = e.dataset.phone;
+    document.getElementById('name').value = editName;
+    document.getElementById('email').value = editEmail;
+    document.getElementById('phone').value = editPhone;
+    form.style.display = 'block';
+    submitBtnToUpdate = true;
+}
 
 // Form functionality
 const form = document.getElementById("formToggle");
