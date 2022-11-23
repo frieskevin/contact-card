@@ -3,6 +3,8 @@ import {initdb, postDb, deleteDb, editDb} from './database';
 import {fetchCards} from './cards';
 import { toggleForm, clearForm } from './form';
 
+const installBtn = document.getElementById('installBtn');
+
 // Import CSS files
 import "../css/index.css";
 
@@ -14,6 +16,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from '../images/logo.png';
 import Bear from '../images/bear.png';
 import Dog from '../images/dog.png';
+
+window.addEventListener('beforeinstallprompt', (event) => {
+  event.preventDefault();
+  installBtn.style.visibility = 'visible';
+
+  installBtn.addEventListener('click', () => {
+    event.prompt();
+    installBtn.setAttribute('disabled', true);
+    installBtn.textContent = 'Installed!';
+  });
+});
+
+window.addEventListener('appinstalled', (event) => {
+  console.log('👍', 'appinstalled', event);
+});
 
 if ('serviceWorker' in navigator) {
   // Use the window load event to keep the page load performant
